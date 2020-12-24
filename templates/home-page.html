@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="../static/css/home.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <div class="topnav">
+        <span id="ven_text">Vendakka</span>
+        <form action="../templates/shopping-cart.html">
+            <button id="cart-button" type="submit"><i class="fa fa-shopping-cart"></i></button>
+        </form>
+        <form id="search-icon" action="#search">
+            <input type="text" placeholder="Search" />
+            <button id="search-button" action="/action_page.php" type="submit"><i class="fa fa-search"></i></button>
+        </form>
+        <a href="../templates/login.html">Login</a>
+        <a href="../templates/registration.html">Register</a>
+        <a href="../templates/home-page.html">Home</a>
+    </div>
+    <div class="myslides">
+        <img class="mySlide" src="../static/images/text-banner.png  ">
+        <img class="mySlide" src="../static/images/text-banner.png  ">
+        <img class="mySlide" src="../static/images/home-banner2.png  ">
+        <img class="mySlide" src="../static/images/home-banner3.png  ">
+
+    </div>
+   <div sent>
+    <p>We bring the season's best mix of 100% certified-organic produce conveniently to your door by growing
+        and partnering with local farms. — we bring our farmers market booth to you!</p>
+   </div>
+    
+            <h3>Explore By Category</h3>
+        
+    <section id="product-section"></section>
+    <div class="division">
+        <div class="box">
+            <form action="../templates/listing-page.html">
+            <div class="div-image">
+                <img src="../static/images/vegetables.jpg " alt="">
+            </div>
+            <div class="btn">
+                <button type="submit" action="../templates/listing-page.html">Vegetables</button>
+            </div>
+        </div>
+        </form>
+        <div class="box">
+            <div class="div-image">
+                <img src="../static/images/fruits.jpg ">
+            </div>
+            <div class="btn">
+                <button type="submit">Fruits</button>
+            </div>
+        </div>
+        <div class="box">
+            <div class="div-image">
+                <img src="../static/images/diary.jpg ">
+            </div>
+            <div class="btn">
+                <button type="submit">Diary</button>
+            </div>
+        </div>
+        <div class="box">
+            <div class="div-image">
+                <img src="../static/images/products.jpg ">
+            </div>
+            <div class="btn">
+                <button type="submit">Other</button>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <script>
+        var slideIndex = 0;
+        showSlides();
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("mySlide");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+<link rel="stylesheet" href="../static/css/stock.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+<div class="topnav">
+  <span id="ven_text">Vendakka</span>
+   <form action="../templates/shopping-cart.html"><button id="cart_button" type="submit" ><i class="fa fa-shopping-cart"></i></button></form>
+    <form id="search_icon" action="#search">
+                <input type="text" placeholder="Search" />
+				<button><i class="fa fa-search"></i></button>
+				
+    </form>
+	<a href="../templates/login.html">Login</a>
+    <a href="../templates/registration.html">Register</a>
+    <a href="../templates/home-page.html">Home</a>
+  
+</div>
+<div id="welcome"> Welcome Farmer, Anna22  <div>Green’s Farm </div> </div>
+<form action="#add-product"><button id="add_product_button" ><span id="add-product">Add Product</button></span></form>
+<div id="stock_view">My Stock</div>
+<div id="side_nav" class="alignleft">
+      <hr>
+      <a href="../templates/listing-page.html">Vegetables</a><hr>
+	  <a href="#fruits">Fruits</a><hr>
+	  <a href="#diary">Diary</a><hr>
+	  <a href="#other products">Other Products</a><hr>
+	  <a href="../templates/add-product.html">Add Product</a><hr>
+	  <a class="active" href="../templates/stock-page.html">My Stock</a><hr>
+	  <a href="../templates/orders-page.html">Orders</a>
+	  <hr>
+</div>
+
+<div  class="container">
+<table  class="styled-table" class="alignleft">
+    <thead>
+        <tr>
+            <th>Stock Id</th>
+			<th>Product</th>
+			<th></th>
+            <th>Quantity</th>
+			<th>Price</th>
+			<th></th>
+			
+        </tr>
+    </thead>
+    <tbody>
+	
+        <tr>
+			<td>s101</td>
+			<td><img id="item_image" src="../static/images/tomato.jpeg" alt="item_image"></td>
+			<td>Tomato <div id="farm_name">Eden Gardens </div></td>
+			<td>30kg</td>
+			<td>₹ 20</td>
+			<td><form action="#remove"><button id="remove_button" ><i class="fa fa-minus-circle"></i></button></form></td>
+        </tr>
+
+	
+	
+		<tr>
+			<td>s121</td>
+			<td><img id="item_image" src="../static/images/onion.jpeg" alt="item_image"></td>
+            <td>Onion <div id="farm_name">Green Farm </div></td>
+			<td>25kg</td>
+			<td>₹ 30</td>
+			<td><form action="#remove"><button id="remove_button" ><i class="fa fa-minus-circle"></i></button></form></td>
+        </tr>  
+    </tbody>
+</table>
+</div>
+
+</body>
+</html>

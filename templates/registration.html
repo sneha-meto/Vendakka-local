@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+        <link rel="stylesheet" href="../static/css/register.css">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    </head>
+<body onload="grab()">
+    
+    <script type="text/javascript" language="javascript">
+                
+        setTimeout(function checkform()
+        {
+
+            if((document.f.usertype[1].checked==true) && (document.f.farm_name.value==""))
+            {
+                alert("please provide *Farm Name");
+                document.f.farm_name.focus();
+                return false;
+            }
+            
+        },2500);
+
+        function toast() {
+            var x = document.getElementById("snackbar");
+            x.className = "show";
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 2000);
+            }
+
+        function getQueryString(string) {
+        var params = location.search.substring(1).split("&");
+        for (var i = 0; i < params.length; i++) {
+            var temp = params[i].split("=");            
+            if (string == temp[0]) {
+                return temp[1];
+            }
+            else return "";
+        }
+        }
+        function grab(){
+            document.getElementById("toast").innerHTML= getQueryString("toast");
+        }
+    </script>
+    <div class="topnav">
+        <span id="ven_text">Vendakka</span>
+        <form action="../templates/shopping-cart.html"><button id="cart_button" type="submit" ><i class="fa fa-shopping-cart"></i></button></form>
+        <form id="search_icon" action="#search">
+                    <input id="search" type="text" placeholder="Search" />
+                    <button><i class="fa fa-search"></i></button>
+                    
+        </form>
+        <a href="../templates/login.html">Login</a>
+        <a href="../templates/registration.html">Register</a>
+        <a href="../templates/home-page.html">Home</a>
+        
+    </div>
+    
+    <div class="section-split">
+            <div class="left">
+        <h1>Register</h1>
+        <p >Join Vendakka now!</p>
+        <button class="login" id="sub">Login</button>
+            <div class="form-box">
+                <form name="f" action="../php/reguser.php" method="POST" onsubmit="return checkform()">
+                <label>Username</label>
+                <div class="input-group">
+                    <input type="text" name="username" required class="inp">
+                </div>
+                <label>Password</label>
+                <div class="input-group">
+                    <input type="text" name="password" required class="inp">
+                </div>
+                <label>Phone Number</label>
+                <div class="input-group">
+                    <input type="text" name="phone" required class="inp">
+                </div>
+                <label>Address</label>
+                <div>
+                    <input type="text" name="street" id="street" class="form-ad" placeholder="Street"/>&nbsp;
+                    <input type="text" name="city" class="form-ad" placeholder="City" />&nbsp;
+                </div>     
+                <br>
+                <div class="form-check">
+                    <label class="form-check-label">You Are A : 
+                        &nbsp&nbsp<input  type="radio" name="usertype" id="usertype1" value="customer" checked>
+                        Customer</label>
+                        &nbsp &nbsp &nbsp<label class="form-check-label">
+                        <input  type="radio" name="usertype" id="usertype2" value="farmer">
+                        Farmer*</label> 
+                </div>
+                <label>*Farm Name</label>
+                <div class="input-group">
+                    <input type="text" name="farm_name" class="inp">
+                </div>
+
+                <input type="submit" name="submit" id="reg" value="Register" onclick="toast()" >
+            </form> 
+            <div id="toast"></div> 
+        
+            </div>
+            </div>
+            
+            <div class="right">
+                <div class="img-banner">
+                <img src="../static/images/logopic.png">
+                </div>
+            </div>
+    </div>
+    
+    </body>
+
+
+
+</html>
+	
+	  

@@ -1,0 +1,237 @@
+  body 
+  {
+    margin: 0;
+    font-family: Poppins;
+  }
+  
+  .topnav
+  {
+    overflow: hidden;
+    background-color: rgba(96.00000187754631, 140.00000685453415, 106.00000128149986, 1);
+    padding-left: 40px;
+  }
+  
+  .topnav a 
+  {
+    margin-top: 7px;
+    margin-right: 20px;
+    float: right;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    font-family:Poppins;
+    font-style: normal;
+    font-weight: bold;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    text-decoration:none;
+  }
+  
+  .topnav a:hover 
+  {
+    background-color: rgba(98.00000187754631, 150.00000685453415, 106.00000128149986, 1);
+    color: black;
+  }
+  
+  #ven_text 
+  {	
+      float: left;
+      color:rgba(255, 255, 255, 1);
+      font-family:Comfortaa;
+      font-style: normal;
+      font-weight: bold;
+      text-align:center;
+      font-size:35px;
+      letter-spacing:0;
+      margin-top: 10px;
+      text-shadow: 1px 1px 3px black;
+      
+  }
+  
+  input[type=text]
+  {
+    margin-top: 2px;
+    margin-right: 16px;
+    float: left;
+    display:block;
+    margin: 0 0 0 auto;
+    width: 250px;
+    height: 39px;
+    box-sizing: border-box;
+    border: 2px solid gray;
+    border: none;
+    border-top-left-radius:20px;
+    border-bottom-left-radius:20px;
+    font-size: 17px;
+    background-color: white;
+    padding: 12px 20px 12px 40px;
+    outline: none;
+    cursor:pointer;
+  }
+  
+  #search-icon 
+  {
+    margin-top: 10px;
+    margin-right: 14px;
+    width: 300px;
+    height:45px;
+    border-radius: 20px;
+    font-size: 16px;
+    float: right;
+    display:flex;
+    flex-direction:row;
+    padding:2px;
+    cursor:pointer;
+  }
+  
+  button 
+  {
+    border-radius: 20px;
+    background-color: white;
+    border:none;
+    color:black;
+    padding: 3px 20px 5px 5px;
+    outline: none;
+  }
+  
+  #search-button
+  {
+    height:39px;
+    border-top-left-radius:0px;
+    border-bottom-left-radius:0px;
+    
+  }
+  
+  #cart-button 
+  {
+    float:right;
+      margin-top: 11px;
+    margin-right: 25px;
+    opacity:1;
+      padding: 3px 6px 5px 5px; 
+      width:55px;
+      height:40px;
+      font-size: 20px;
+      background-size:cover;
+  }
+    
+
+  .sidenav 
+  { 
+        background-color:rgba(96.00000187754631, 140.00000685453415, 106.00000128149986, 1);
+        opacity:1;
+        width:190px;
+        height:310px;
+        border-radius:15px;
+        display: flex;
+        flex-direction: column;
+        margin: 10px 40px;
+        padding: 50px 0px;
+        float: left;
+        
+  }
+  .sidenav a 
+  {
+        text-decoration: none;
+        padding: 8px 20px;
+        color:white;
+        font-weight: 600;
+  }
+
+  .sidenav a:hover 
+  {
+        background-color: white;
+        color: black;
+  }
+  hr{ 
+        margin:0;
+        width:100%;
+        border-top: 2px solid white;
+  }
+  .banner img{
+      
+         width:94.54%; margin-left: 45px; margin-top: 79px; float:left; height:280px;border-radius: 40px;
+       }
+  .myslides img
+  {
+        width: 91.14%;
+        height: 280px;
+        margin: 19px 50px 0px 50px;
+        border-radius: 40px;  
+  }
+
+  p{
+        text-align: center;
+        padding: 30px 80px;
+        margin:0;
+        font-family: Poppins;
+        font-style: italic;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 36px;
+        color: #377646;
+  }
+       
+  h3
+  {  width:100%;
+    text-align: center;
+    margin:0;
+    font-family: Comfortaa;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 54px;
+    color: #000000;
+    
+  }   
+  .div-image
+  {
+    width: 200px;
+    border-radius: 40px 40px 0px 0px;
+    overflow: hidden;
+  }
+
+  .box img
+  {
+    border-radius: 40px 40px 0px 0px;  
+  }
+  .box img
+  {
+    max-width: 18em; 
+    max-height: 11em;
+    transition: 0.7s; 
+  }
+  .box img:hover
+  {
+    border-radius: 55px 55px 65px 65px; 
+    width: 250px;
+    height: 200px;
+    transform: scale(1.2);
+  }
+  .btn button
+  { 
+    position: absolute;
+    width: 200px;
+    height: 55px;
+    margin-top: -10px;
+    border-radius: 0px 0px 40px 40px;
+    cursor: pointer;
+    background-color: black;
+    color: #FFFFFF;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 26px;
+    line-height: 45px
+       
+   }                   
+  
+  .division
+  {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,215px); 
+    grid-gap: 50px 50px;
+    padding: 30px 80px;
+    box-align: center
+  }    
+
+ 

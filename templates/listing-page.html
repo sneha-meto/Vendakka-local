@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+<link rel="stylesheet" href="../static/css/listing.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+</head>
+
+<body>
+<div class="topnav">
+  <span id="ven_text">Vendakka</span>
+  <form action="../templates/shopping-cart.html">
+    <button id="cart-button" type="submit" ><i class="fa fa-shopping-cart"></i></button>
+  </form>
+    <form id="search-icon" action="#search">
+      <input type="text" placeholder="Search" />
+			<button id ="search-button" action="/action_page.php" type="submit" ><i class="fa fa-search"></i></button>
+    </form>
+    <a href="../templates/login.html">Login</a>
+    <a href="../templates/registration.html">Register</a>
+    <a href="../templates/home-page.html">Home</a>
+</div>
+<!-- orders page code begins -->
+<div class="banner">
+    <img src="../static/images/venda-banner.png" alt="banner image">
+</div>
+<div class="sidenav">
+    <hr>
+    <a class="active" href="../templates/listing-page.html">Vegetables</a><hr>
+    <a href="">Fruits</a><hr>
+    <a href="">Diary</a><hr>
+    <a href="">Other Products</a><hr>
+    <a href="../templates/add-product.html">Add Product</a><hr>
+    <a href="../templates/stock-page.html">My Stock</a><hr>
+    <a href="../templates/orders-page.html">Orders</a><hr>
+</div>
+
+<section id= "product-section">
+    <h1>Vegetables</h1>
+    <div class="product-container">
+    <div class="card">
+        <div class="card-image">
+            <img src="../static/images/tomato.jpeg" alt="">
+        </div>
+        <div class="card-text">
+            <span class = "name"> Carrot</span> <span class="unit"> per Kg</span><br>
+           <span class="farm"> From Green's Farm</span><br>
+            
+        </div><span class="price"> ₹ 30</span>
+        <div class="card-add">
+            <button class="add-button" action="/action_page.php" type="submit" ><i class="fa fa-cart-plus"></i></button>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-image">
+            <img src="../static/images/carrot.jpeg" alt="">
+        </div>
+        <div class="card-text">
+            <span class = "name"> Carrot</span> <span class="unit"> per Kg</span><br>
+            <span class="farm"> From Green's Farm</span><br>
+           
+        </div> <span class="price"> ₹ 30</span>
+        <div class="card-add">
+            <button class="add-button" action="/action_page.php" type="submit" ><i class="fa fa-cart-plus"></i></button>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-image">
+            <img src="../static/images/cabbage.jpeg" alt="">
+        </div>
+        <div class="card-text">
+            <span class = "name"> Carrot</span> <span class="unit"> per Kg</span><br>
+            <span class="farm"> From Green's Farm</span><br>
+            
+        </div><span class="price"> ₹ 30</span>
+        <div class="card-add">
+            <button class="add-button" action="/action_page.php" type="submit" ><i class="fa fa-cart-plus"></i></button>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-image">
+            <img src="../static/images/bell-pepper.jpeg" alt="">
+        </div>
+        <div class="card-text">
+            <span class = "name"> Carrot</span> <span class="unit"> per Kg</span><br>
+            <span class="farm"> From Green's Farm</span><br>
+            
+        </div><span class="price"> ₹ 30</span>
+        <div class="card-add">
+            <button class="add-button" action="/action_page.php" type="submit" ><i class="fa fa-cart-plus "></i></button>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-image">
+            <img src="../static/images/onion.jpeg" alt="">
+        </div>
+        <div class="card-text">
+            <span class = "name"> Carrot</span> <span class="unit"> per Kg</span><br>
+            <span class="farm"> From Green's Farm</span><br>
+            
+        </div><span class="price"> ₹ 30</span>
+        <div class="card-add">
+            <button class="add-button" action="/action_page.php" type="submit" ><i class="fa fa-cart-plus"></i></button>
+        </div>
+    </div>
+
+    </div>
+
+
+
+
+</section>
+
+
+
+</body>
+</html>

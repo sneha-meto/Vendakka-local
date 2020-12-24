@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+<link rel="stylesheet" href="../static/css/cart.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+<div class="topnav">
+  <span id="ven_text">Vendakka</span>
+   <form action="../templates/shopping-cart.html"><button id="cart_button" type="submit" ><i class="fa fa-shopping-cart"></i></button></form>
+    <form id="search_icon" action="#search">
+                <input type="text" placeholder="Search" />
+				<button><i class="fa fa-search"></i></button>
+				
+    </form>
+	<a href="../templates/login.html">Login</a>
+    <a href="../templates/registration.html">Register</a>
+    <a href="../templates/home-page.html">Home</a>
+  
+</div>
+<div  class="container">
+<div id="shop_cart">Shopping Cart</div>
+<table  class="styled-table" class="alignleft">
+    <thead>
+        <tr>
+            <th>Product</th>
+			
+			<th></th>
+            <th>Quantity</th>
+			<th>Price</th>
+			<th>Total</th>
+			<th></th>
+			
+        </tr>
+    </thead>
+    <tbody>
+	
+        <tr>
+			<td><img id="item_image" src="../static/images/tomato.jpeg" alt="item_image"></td>
+			<td>Tomato <div id="farm_name">Eden Gardens </div></td>
+			<td>3kg</td>
+			<td>₹ 20</td>
+			<td>₹ 60</td>
+			<td><form action="#remove"><button id="remove_button" ><i class="fa fa-minus-circle"></i></button></form></td>
+        </tr>
+
+	
+	
+		<tr>
+			<td><img id="item_image" src="../static/images/onion.jpeg" alt="item_image"></td>
+            <td>Onion <div id="farm_name">Green Farm </div></td>
+			<td>3kg</td>
+			<td>₹ 20</td>
+			<td>₹ 60</td>
+			<td><form action="#remove"><button id="remove_button" ><i class="fa fa-minus-circle"></i></button></form></td>
+        </tr>  
+    </tbody>
+</table>
+</div>
+<div id="bill" class="alignright">
+      <h4 id="summary">Summary</h4>
+	  <div id="line"></div>
+      <p><span id="item">Items:</span> <span id="price">2</span></p>
+	  <p><span id="item">Subtotal:</span> <span id="price">$170</span></p>
+	  <p><span id="item">Delivery Charges:</span> <span id="price">$30</span></p>
+	  <div id="line"></div>
+	  <p><span id="total">Grand Total:</span> <span id="price">$200</span></p>
+	  <p><form action="#check-out"><button id="check_out_button" ><span id="check-out">Check Out</button></span></form></p>
+	  
+</div>
+
+
+</body>
+</html>

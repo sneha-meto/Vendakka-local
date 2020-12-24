@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+<link rel="stylesheet" href="../static/css/orders.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+</head>
+
+<body>
+<div class="topnav">
+  <span id="ven_text">Vendakka</span>
+  <form action="../templates/shopping-cart.html">
+    <button id="cart-button" type="submit" ><i class="fa fa-shopping-cart"></i></button>
+  </form>
+    <form id="search-icon" action="#search">
+      <input type="text" placeholder="Search" />
+			<button id ="search-button" action="/action_page.php" type="submit" ><i class="fa fa-search"></i></button>
+    </form>
+    <a href="../templates/login.html">Login</a>
+    <a href="../templates/registration.html">Register</a>
+    <a href="../templates/home-page.html">Home</a>
+</div>
+<!-- orders page code begins -->
+<p id="greeting"></p>
+
+<div class="sidenav">
+    <hr>
+    <a href="../templates/listing-page.html">Vegetables</a><hr>
+    <a href="">Fruits</a><hr>
+    <a href="">Diary</a><hr>
+    <a href="">Other Products</a><hr>
+    <a href="../templates/add-product.html">Add Product</a><hr>
+    <a href="../templates/stock-page.html">My Stock</a><hr>
+    <a class="active" href="../templates/orders-page.html">Orders</a><hr>
+</div>
+<div class=body-container>
+  
+<div class= "button-container">
+  <form action="../templates/stock-page.html"></form>
+  <a href="../templates/stock-page.html"><button id="view-stock" action="../">View Stock</button></a>
+  <a href="../templates/add-product.html"><button id="add-product" action="#stock">Add Product</button></a>
+
+</div>
+<h1>Orders</h1> 
+<div  class="table-container">
+  <table id="table1" class="styled-table" class="alignleft">
+    <thead>
+      <tr>
+        <th>Order Id</th>
+        <th>Customer</th>
+        <th>Products</th>
+        <th>Quantity</th>
+        <th>Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>o101</td>
+        <td>James19</td>
+        <td>Tomato <br> Onion <br>Green Amaranthine</td>
+        <td>3 Kg <br> 2 Kg <br> 2 Bunches</td>
+        <td>₹ 140</td>
+      </tr>
+      
+      <tr>
+          <td>o101</td>
+          <td>James19</td>
+          <td>Tomato </td>
+          <td>3 kg </td>
+          <td>₹ 140</td>
+      </tr>  
+    </tbody>
+  </table>
+</div>
+</div>
+<script>
+document.getElementById("greeting").innerHTML="Welcome Farmer, Anna22 <br><span>Green's Farm</span>";
+</script>
+
+</body>
+</html>

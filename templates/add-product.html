@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+
+</head>
+<link rel="stylesheet" href="../static/css/add-product.css">
+<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<body>
+  <div class="topnav">
+    <span id="ven_text">Vendakka</span>
+    <form action="../templates/shopping-cart.html">
+      <button id="cart-button" type="submit"><i class="fa fa-shopping-cart"></i></button>
+    </form>
+    <form id="search-icon" action="#search">
+      <input type="text" id="s" placeholder="Search" />
+      <button id="search-button" action="/action_page.php" type="submit"><i class="fa fa-search"></i></button>
+    </form>
+    <a href="../templates/login.html">Login</a>
+    <a href="../templates/registration.html">Register</a>
+    <a href="../templates/home-page.html">Home</a>
+  </div>
+
+  <p id="greeting"></p>
+
+      <div class="sidenav">
+        <hr>
+        <a href="../templates/listing-page.html">Vegetables</a><hr>
+        <a href="">Fruits</a><hr>
+        <a href="">Diary</a><hr>
+        <a href="">Other Products</a><hr>
+        <a class="active" href="../templates/add-product.html">Add Product</a><hr>
+        <a href="../templates/stock-page.html">My Stock</a><hr>
+        <a href="../templates/orders-page.html">Orders</a><hr>
+      </div>
+
+      
+
+      <div class="align-right">
+        <h1>Add Product</h1>
+      <form action="">
+
+          <div class="grid">
+       
+          
+          <span  class="title">Product Name : </span>
+          <input  id="a" type="text" class="entry">
+       
+
+        
+          <span class="title">Category :     </span>
+          <select id="b" type="enum" class="entry">
+            <option>Vegetable</option>
+            <option>Fruit</option>
+            <option>Diary</option>
+            <option>Other</option>
+          </select>
+     
+
+  
+          <span class="title" value="Quantity">Quantity :     </span>
+          <input id="c" type="number" class="entry">
+   
+
+     
+          <span class="title">Unit : </span>
+          <select id="d" type="enum" value="Unit :" class="entry">
+            <option>Kg</option>
+            <option>g</option>
+            <option>L</option>
+            <option>Bunch</option>
+            <option>No's</option>
+            <option>Pack</option>
+          </select>
+  
+
+  
+          <span class="title">Cost Per Unit :</span>
+          <input  id="e" type="number" class="entry" name="cost">
+  
+        <div></div>
+        <div class="box" id="btbox">
+                <button id="submit" type="submit">Confirm</button>
+                <button id="cancel" type="reset">Cancel</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+
+  <script>
+      document.getElementById("greeting").innerHTML="Welcome Farmer, Anna22 <br><span>Green's Farm</span>";
+  </script>
+</body>
+
+</html>
