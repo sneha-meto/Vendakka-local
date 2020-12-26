@@ -43,7 +43,7 @@
 
       <div class="align-right">
         <h1>Add Product</h1>
-      <form action="">
+      <form action="../php/upload.php" method="post" enctype="multipart/form-data">
 
           <div class="grid">
        
@@ -51,7 +51,8 @@
           <span  class="title">Product Name : </span>
           <input  id="a" type="text" class="entry">
        
-
+          <span  class="title">Image : </span>
+          <input id = "f"  type="file" name="fileToUpload" id="fileToUpload">
         
           <span class="title">Category :     </span>
           <select id="b" type="enum" class="entry">
