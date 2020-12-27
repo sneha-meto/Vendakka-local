@@ -10,7 +10,7 @@
     
     <script type="text/javascript" language="javascript">
                 
-        setTimeout(function checkform()
+        function checkform()
         {
 
             if((document.f.usertype[1].checked==true) && (document.f.farm_name.value==""))
@@ -20,20 +20,16 @@
                 return false;
             }
             
-        },2500);
-
-        function toast() {
-            var x = document.getElementById("snackbar");
-            x.className = "show";
-            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 2000);
-            }
+        }
 
         function getQueryString(string) {
         var params = location.search.substring(1).split("&");
         for (var i = 0; i < params.length; i++) {
             var temp = params[i].split("=");            
             if (string == temp[0]) {
-                return temp[1];
+                words=temp[1].split("-");
+                status=words.join(" ");
+                return status;
             }
             else return "";
         }
@@ -65,16 +61,17 @@
                 <form name="f" action="../php/reguser.php" method="POST" onsubmit="return checkform()">
                 <label>Username</label>
                 <div class="input-group">
-                    <input type="text" name="username" required class="inp">
+                    <input type="text" name="username" required class="inp" >
                 </div>
                 <label>Password</label>
                 <div class="input-group">
-                    <input type="text" name="password" required class="inp">
+                    <input type="password" name="password" required class="inp" minlength="6">
                 </div>
                 <label>Phone Number</label>
                 <div class="input-group">
-                    <input type="text" name="phone" required class="inp">
+                    <input type="tel" name="phone" required class="inp" pattern="[0-9]{10}">
                 </div>
+            
                 <label>Address</label>
                 <div>
                     <input type="text" name="street" id="street" class="form-ad" placeholder="Street"/>&nbsp;

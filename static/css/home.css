@@ -148,27 +148,29 @@
         width:100%;
         border-top: 2px solid white;
   }
-  .banner img{
+  .myslides img{
       
-         width:94.54%; margin-left: 45px; margin-top: 79px; float:left; height:280px;border-radius: 40px;
+      height:16.5em;
+       
        }
-  .myslides img
-  {
-        width: 91.14%;
-        height: 280px;
-        margin: 19px 50px 0px 50px;
-        border-radius: 40px;  
+  .myslides 
+
+  {     border-radius: 40px;
+        object-fit: cover;
+        overflow: hidden;
+        margin: 20px 50px;
+         
   }
 
   p{
         text-align: center;
-        padding: 30px 80px;
+        padding: 25px 80px;
         margin:0;
         font-family: Poppins;
         font-style: italic;
         font-weight: normal;
         font-size: 18px;
-        line-height: 36px;
+        line-height: 30px;
         color: #377646;
   }
        
@@ -177,7 +179,8 @@
     text-align: center;
     margin:0;
     font-family: Comfortaa;
-    font-weight: bold;
+    text-shadow:3px 3px 5px grey;
+    font-weight: 900;
     font-size: 30px;
     line-height: 54px;
     color: #000000;
@@ -189,13 +192,13 @@
     border-radius: 40px 40px 0px 0px;
     overflow: hidden;
   }
+  .box{
+    padding:10px;
+  }
 
   .box img
   {
     border-radius: 40px 40px 0px 0px;  
-  }
-  .box img
-  {
     max-width: 18em; 
     max-height: 11em;
     transition: 0.7s; 
@@ -229,8 +232,8 @@
   {
     display: grid;
     grid-template-columns: repeat(auto-fill,215px); 
-    grid-gap: 50px 50px;
-    padding: 30px 80px;
+    grid-gap: 50px 60px;
+    padding: 30px 100px;
     box-align: center
   }    
 
