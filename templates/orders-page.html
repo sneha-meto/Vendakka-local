@@ -8,7 +8,7 @@
 
 </head>
 
-<body>
+<body >
 <div class="topnav">
   <span id="ven_text">Vendakka</span>
   <form action="../templates/shopping-cart.html">
@@ -22,6 +22,7 @@
     <a href="../templates/registration.html">Register</a>
     <a href="../templates/home-page.html">Home</a>
 </div>
+<?php require ('../php/header.php'); ?>
 <!-- orders page code begins -->
 <p id="greeting"></p>
 
@@ -31,16 +32,16 @@
     <a href="">Fruits</a><hr>
     <a href="">Diary</a><hr>
     <a href="">Other Products</a><hr>
-    <a href="../templates/add-product.html">Add Product</a><hr>
-    <a href="../templates/stock-page.html">My Stock</a><hr>
+    <a href="../templates/add-product.html" class="farmer-only">Add Product</a><hr>
+    <a href="../templates/stock-page.html" class="farmer-only">My Stock</a><hr>
     <a class="active" href="../templates/orders-page.html">Orders</a><hr>
 </div>
 <div class=body-container>
   
 <div class= "button-container">
   <form action="../templates/stock-page.html"></form>
-  <a href="../templates/stock-page.html"><button id="view-stock" action="../">View Stock</button></a>
-  <a href="../templates/add-product.html"><button id="add-product" action="#stock">Add Product</button></a>
+  <a href="../templates/stock-page.html" class="farmer-only"><button id="view-stock" action="../">View Stock</button></a>
+  <a href="../templates/add-product.html" class="farmer-only"><button id="add-product" action="#stock">Add Product</button></a>
 
 </div>
 <h1>Orders</h1> 
@@ -76,8 +77,21 @@
 </div>
 </div>
 <script>
-document.getElementById("greeting").innerHTML="Welcome Farmer, Anna22 <br><span>Green's Farm</span>";
+
+var name = "<?php echo $_SESSION['username']; ?>".toString();
+var farm = "<?php echo $_SESSION['farm_name']; ?>".toString();
+var type = "<?php echo $_SESSION['usertype']; ?>".toString();
+type=type[0].toUpperCase()+type.slice(1); 
+document.getElementById("greeting").innerHTML="Welcome "+type+", "+name+" <br><span>"+farm+"</span>";
+if (type == "Farmer"){
+//  $("a.farmer-only").show();
+ x=document.getElementsByClassName("farmer-only");
+ for(i=0;i<x.length;i++){
+   x[i].style.display="inline-block";
+ }
+ }
+
 </script>
 
 </body>
-</html>
+</html

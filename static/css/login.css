@@ -330,7 +330,7 @@ input::-webkit-input-placeholder {
     }
        
 #log{
-   
+    margin:10px 0px;
     background-color:rgba(98.00000187754631, 150.00000685453415, 106.00000128149986, 1);
     color:#ffffff;
     width: 350px;
@@ -353,4 +353,10 @@ input::-webkit-input-placeholder {
     box-shadow: 2px 2px 5px grey;
     border: none;
 }
+
+#toast{
+    width: 100%;
+    text-align: center;
+  
+  }
 

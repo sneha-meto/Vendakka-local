@@ -5,6 +5,7 @@
 <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 <link rel="stylesheet" href="../static/css/listing.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
 
 </head>
 
@@ -22,7 +23,8 @@
     <a href="../templates/registration.html">Register</a>
     <a href="../templates/home-page.html">Home</a>
 </div>
-<!-- orders page code begins -->
+<?php require ('../php/header.php'); ?>
+<!-- listing page code begins -->
 <div class="banner">
     <img src="../static/images/venda-banner.png" alt="banner image">
 </div>
@@ -32,8 +34,8 @@
     <a href="">Fruits</a><hr>
     <a href="">Diary</a><hr>
     <a href="">Other Products</a><hr>
-    <a href="../templates/add-product.html">Add Product</a><hr>
-    <a href="../templates/stock-page.html">My Stock</a><hr>
+    <a href="../templates/add-product.html" class="farmer-only">Add Product</a><hr>
+    <a href="../templates/stock-page.html" class="farmer-only">My Stock</a><hr>
     <a href="../templates/orders-page.html">Orders</a><hr>
 </div>
 
@@ -113,7 +115,15 @@
 
 </section>
 
-
+<script>
+var type = "<?php echo $_SESSION['usertype']; ?>".toString();
+if (type == "farmer"){
+ x=document.getElementsByClassName("farmer-only");
+ for(i=0;i<x.length;i++){
+   x[i].style.display="inline-block";
+ }
+ }
+</script>
 
 </body>
 </html>
