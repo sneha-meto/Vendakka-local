@@ -6,7 +6,25 @@
         <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
     </head>
-<body>
+<body onload="grab()">
+<script type="text/javascript" language="javascript">
+
+    function getQueryString(string) {
+    var params = location.search.substring(1).split("&");
+    for (var i = 0; i < params.length; i++) {
+        var temp = params[i].split("=");            
+        if (string == temp[0]) {
+            words=temp[1].split("-");
+            status=words.join(" ");
+            return status;
+        }
+        else return "";
+    }
+    }
+    function grab(){
+        document.getElementById("toast").innerHTML= getQueryString("toast");
+    }
+</script>
 <div class="topnav">
   <span id="ven_text">Vendakka</span>
    <form action="../templates/shopping-cart.html"><button id="cart_button" type="submit" ><i class="fa fa-shopping-cart"></i></button></form>
@@ -26,14 +44,14 @@
         <h1>Login</h1>
         <p>Welcome back!</p>
         <hr>
-        <button class="Register" id="sub">Register</button>
+        <a href="../templates/registration.html"><button class="Register" id="sub">Register</button></a>
 
            <div class="form-box">
-              <form >
+              <form name="f" action="../php/user-login.php" method="POST" >
           <br><br>
                 <div class="inputContainer">
                     <i class="fa fa-user icon  icn" ></i> 
-                    <input type="text" name="Username" required class="inp" placeholder="Username" id="user-o">
+                    <input type="text" name="username" required class="inp" placeholder="Username" id="user-o">
                     
                 </div>
 
@@ -46,8 +64,9 @@
                 <a href="" class="pass">Forgot Password?</a><br><br>
 
 
-                <button id="log">Login</button> 
+                <button type="submit" id="log" onclick="toast()">Login</button> 
             </form> 
+            <div id="toast"></div>
             </div>
     
 

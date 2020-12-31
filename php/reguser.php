@@ -12,9 +12,9 @@ $username=$_POST['username'];
 $password=$_POST['password'];
 $usertype=$_POST['usertype'];
 $phone=$_POST['phone'];
-$street=$_POST['street'];
-$city=$_POST['city'];
-$farm_name=$_POST['farm_name'];
+$street=$_POST["street"];
+$city=$_POST["city"];
+$farm_name=$_POST["farm_name"];
 
 $grab="select * from users where username ='$username'";
 $res_grab=mysqli_query($conn,$grab);

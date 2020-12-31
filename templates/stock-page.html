@@ -22,9 +22,11 @@
     <a href="../templates/home-page.html">Home</a>
   
 </div>
-<div id="welcome"> Welcome Farmer, Anna22  <div>Green’s Farm </div> </div>
-<form action="#add-product"><button id="add_product_button" ><span id="add-product">Add Product</button></span></form>
-<div id="stock_view">My Stock</div>
+<?php require ('../php/header.php'); ?>
+
+
+<p id="greeting"></p>
+
 <div id="side_nav" class="alignleft">
       <hr>
       <a href="../templates/listing-page.html">Vegetables</a><hr>
@@ -38,6 +40,9 @@
 </div>
 
 <div  class="container">
+<a href="../templates/add-product.html"><button id="add_product_button" >Add Product</button></a> 
+<h1 id="stock_view">My Stock</h1>
+
 <table  class="styled-table" class="alignleft">
     <thead>
         <tr>
@@ -74,6 +79,13 @@
     </tbody>
 </table>
 </div>
+<script>
+
+	var name = "<?php echo $_SESSION['username']; ?>".toString();
+	var farm = "<?php echo $_SESSION['farm_name']; ?>".toString();
+	
+	document.getElementById("greeting").innerHTML="Welcome Farmer, "+name+" <br><span>"+farm+"</span>";
+	</script>
 
 </body>
 </html>
