@@ -226,7 +226,7 @@ input,select:focus {outline:none;}
   font-family: Poppins;
   font-size:16px; 
   font-weight: bold;
-  margin: 0px 5px;
+  margin: 0px 10px 0px 0px;
   padding: 5px 30px;
   box-shadow: 2px 2px 5px grey;
   color:white;
@@ -259,3 +259,5 @@ input,select:focus {outline:none;}
       box-shadow: 1px 1px 5px grey;
       text-align: right;
     }
+   
+    

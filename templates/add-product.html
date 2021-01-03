@@ -9,9 +9,11 @@
 <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
 <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
 
-<body>
+
+<body onload="grab()">
+
   <div class="topnav">
     <span id="ven_text">Vendakka</span>
     <form action="../templates/shopping-cart.html">
@@ -44,19 +46,19 @@
 
       <div class="align-right">
         <h1>Add Product</h1>
-      <form action="../php/upload.php" method="post" enctype="multipart/form-data">
+      <form id="add-form" action="../php/add-product.php" method="POST" enctype="multipart/form-data">
 
           <div class="grid">
        
           
           <span  class="title">Product Name : </span>
-          <input  id="a" type="text" class="entry">
+          <input  name="product-name" id="a" type="text" class="entry" required>
        
           <span  class="title">Image : </span>
-          <input id = "f"  type="file" name="fileToUpload" id="fileToUpload">
+          <input id ="f" type="file" name="file-name" onchange="check()" data-max-size="2048" required>
         
           <span class="title">Category :     </span>
-          <select id="b" type="enum" class="entry">
+          <select name="category" id="b" type="enum" class="entry">
             <option>Vegetable</option>
             <option>Fruit</option>
             <option>Diary</option>
@@ -66,12 +68,12 @@
 
   
           <span class="title" value="Quantity">Quantity :     </span>
-          <input id="c" type="number" class="entry">
+          <input name="quantity" id="c" type="number" class="entry" min="1" required>
    
 
      
           <span class="title">Unit : </span>
-          <select id="d" type="enum" value="Unit :" class="entry">
+          <select name="unit" id="d" type="enum" value="Unit :" class="entry" required>
             <option>Kg</option>
             <option>g</option>
             <option>L</option>
@@ -82,25 +84,71 @@
   
 
   
-          <span class="title">Cost Per Unit :</span>
-          <input  id="e" type="number" class="entry" name="cost">
+          <span class="title">Cost Per Unit(₹) :</span>
+          <input  name="cost" id="e" type="number" class="entry" name="cost" min="1" plceholder="Price in Rupees" required>
   
         <div></div>
         <div class="box" id="btbox">
-                <button id="submit" type="submit">Confirm</button>
+                <button id="submit" type="submit" onclick="toast()">Confirm</button>
                 <button id="cancel" type="reset">Cancel</button>
         </div>
+        <div></div>
+        <div id="toast" ></div>
       </div>
     </form>
 
   </div>
-
-  <script>
-      var name = "<?php echo $_SESSION['username']; ?>".toString();
-      var farm = "<?php echo $_SESSION['farm_name']; ?>".toString();
+   
       
-      document.getElementById("greeting").innerHTML="Welcome Farmer, "+name+" <br><span>"+farm+"</span>";
-      </script>
+     
+
+    
+      <script type="text/javascript" language="javascript">
+ // $('#add-form').ajaxForm(function(response) {alert(response);});
+      function getQueryString(string) {
+      var params = location.search.substring(1).split("&");
+      for (var i = 0; i < params.length; i++) {
+          var temp = params[i].split("=");            
+          if (string == temp[0]) {
+              words=temp[1].split("-");
+              status=words.join(" ");
+              return status;
+          }
+          else return "";
+      }
+      }
+      function grab(){
+        document.getElementById("toast").innerHTML= getQueryString("toast");
+          // document.getElementById("toast").innerHTML= getQueryString("toast");
+      }
+
+      function check(){
+        var uploadField = document.getElementById('f'); 
+        var filePath = uploadField.value; 
+        var allowedExtensions =  /(\.jpg|\.jpeg|\.png|\.gif)$/i; 
+
+        if(uploadField.files[0].size > 2200000){
+          alert("File is too big, please limit file size to 2 MB");
+          uploadField.value = null;
+        }
+
+        if (!allowedExtensions.exec(filePath)) { 
+          alert('Invalid file type'); 
+          uploadField.value = null; 
+          return false; 
+        }
+      
+      }
+
+      
+      $(document).ready(function () {
+        var name = "<?php echo $_SESSION['username']; ?>".toString();
+        var farm = "<?php echo $_SESSION['farm_name']; ?>".toString();
+        document.getElementById("greeting").innerHTML="Welcome Farmer, "+name+" <br><span>"+farm+"</span>";
+
+      });
+
+</script>
 </body>
 
 </html>
