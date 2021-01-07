@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
+<link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+<link rel="stylesheet" href="../static/css/listing.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+
+</head>
+<script>
+    function getQueryString(string) {
+      var params = location.search.substring(1).split("&");
+      for (var i = 0; i < params.length; i++) {
+          var temp = params[i].split("=");            
+          if (string == temp[0]) {
+              word=temp[1]
+              return word;
+          }
+          else return "";
+      }
+      }
+
+      function fetch(x){
+            console.log(x);
+        }
+
+    function search_product() { 
+        input = getQueryString("query-string").toLowerCase();
+        var data = {search: input};
+        $.ajax({
+            method: 'POST',
+            url:"../php/search.php",
+            data: data,
+            dataType:'json'}).done( function(raw_responses) {
+            $.map(raw_responses,function(response,i){
+            $('.product-container').append('<div class="card">' +
+                '<div class="card-image">' +
+                '<img src='+response.product_image+' alt="">' +
+                '</div>' +
+                '<div class="card-text">' +
+                '<span class = "name">' + response.product_name + '</span>' + '<span class="unit">' +"per "+ response.unit + '</span>' + '<br>' +
+                '<span class="farm">' + "From " + response.farm_name + '</span>' + '<br>' +
+
+                '</div>' + '<span class="price">' + "₹ " + response.price + '</span>' +
+                '<div class="card-add">' +
+                ' <button class="add-button" onclick="'+fetch(response.product_name)+'" action=""  type="submit" name="ct" >' + '<i class="fa fa-cart-plus">' + '</i>' + '</button>' +
+                '</div>' +
+                '</div>');
+            
+         })});
+        
+        }
+       
+</script>
+<body onload="search_product()">
+<div class="topnav">
+  <span id="ven_text">Vendakka</span>
+  <form action="../templates/shopping-cart.html">
+    <button id="cart-button" type="submit" ><i class="fa fa-shopping-cart"></i></button>
+  </form>
+    <form id="search-icon" action="../templates/search.html">
+      <input type="text" name="query-string" placeholder="Search" />
+			<button id ="search-button" action="/action_page.php" type="submit" ><i class="fa fa-search"></i></button>
+    </form>
+    <a href="../templates/login.html">Login</a>
+    <a href="../templates/registration.html">Register</a>
+    <a href="../templates/home-page.html">Home</a>
+</div>
+<?php require ('../php/header.php'); ?>
+<!-- listing page code begins -->
+<div class="banner">
+    <img src="../static/images/venda-banner.png" alt="banner image">
+</div>
+<div class="sidenav">
+    <hr>
+    <a href="../templates/listing-page.html">Vegetables</a><hr>
+    <a href="">Fruits</a><hr>
+    <a href="">Diary</a><hr>
+    <a href="">Other Products</a><hr>
+    <a href="../templates/add-product.html" class="farmer-only">Add Product</a><hr>
+    <a href="../templates/stock-page.html" class="farmer-only">My Stock</a><hr>
+    <a href="../templates/orders-page.html">Orders</a><hr>
+</div>
+
+<section id= "product-section">
+    <div><h1>Search</h1></div> 
+    <div class="product-container">
+
+    </div>
+</section>
+
+<script>
+    $(document).ready(function(){
+    var type = "<?php echo $_SESSION['usertype']; ?>".toString();
+    if (type == "farmer"){
+    x=document.getElementsByClassName("farmer-only");
+    for(i=0;i<x.length;i++){
+    x[i].style.display="inline-block";
+    }
+    }
+    });
+
+
+
+</script>
+
+</body>
+</html>

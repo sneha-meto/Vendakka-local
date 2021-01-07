@@ -6,6 +6,7 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="stylesheet" href="../static/css/home.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+  
 
 </head>
 
@@ -15,8 +16,8 @@
         <form action="../templates/shopping-cart.html">
             <button id="cart-button" type="submit"><i class="fa fa-shopping-cart"></i></button>
         </form>
-        <form id="search-icon" action="#search">
-            <input type="text" placeholder="Search" />
+        <form id="search-icon" action="../templates/search.html" onsubmit="">
+            <input id="searchbar" name="query-string" type="text" placeholder="Search" />
             <button id="search-button" action="/action_page.php" type="submit"><i class="fa fa-search"></i></button>
         </form>
         <a href="../templates/login.html">Login</a>
@@ -60,12 +61,12 @@
                 <img src="../static/images/diary.jpg ">
             </div>
             <div class="btn">
-                <button type="submit">Diary</button>
+                <button type="submit">Dairy</button>
             </div>
         </div>
         <div class="box">
             <div class="div-image">
-                <img src="../static/images/products.jpg ">
+                <img src="../static/images/oil-product.jpg">
             </div>
             <div class="btn">
                 <button type="submit">Other</button>
@@ -73,7 +74,14 @@
         </div>
     </div>
     <br><br>
-    <script>
+    <div id="bottom" >
+        <span id ="title">Quick Links :</span>&nbsp;&nbsp;&nbsp;
+            <a href="../templates/add-product.html" class="farmer-only"><span class="fa fa-tags , item"></span> Add Products </a>&nbsp;&nbsp;
+            <a href="../templates/stock-page.html" class="farmer-only"><span class="fa fa-line-chart , item"></span> Review Stocks </a>&nbsp;&nbsp;
+            <a href="../templates/orders-page.html" ><span class="fa fa-shopping-basket , item"></span> View Orders </a>
+    </div>
+    
+    <script type="text/javascript" language="javascript">
         var slideIndex = 0;
         showSlides();
         function showSlides() {
@@ -87,6 +95,24 @@
             slides[slideIndex - 1].style.display = "block";
             setTimeout(showSlides, 2000); // Change image every 2 seconds
         }
+
+        var type = "<?php echo $_SESSION['usertype']; ?>".toString();
+        if (type == "farmer"){
+        x=document.getElementsByClassName("farmer-only");
+        for(var j=0;j<x.length;j++){
+        x[j].style.display="inline-block";
+        }
+        }
+
+
+
+      
+
+
+
+
+       
+
     </script>
 </body>
 
