@@ -7,9 +7,47 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <link rel="stylesheet" href="../static/css/home.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-  
-
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
 </head>
+
+<script>
+
+    function grab(){
+
+        $.ajax({
+            method: 'POST',
+            url: "http://localhost/Vendakka/ven%20new/Vendakka-local/php/catlink.php",
+            dataType: 'json',
+            data: { category: this.id },
+            dataType: 'json',
+            success: function (response) {
+            console.log(data);
+
+            $.map(response, function (post, i) {
+                $('h1').val( post.category );
+            });
+
+            $.map(data, function (post, i) {
+
+                $('#tt').append(
+                    '<div class="card">' +
+                    '<div class="card-image">' +
+                    '<img src=' + post.product_image + ' alt="">' +
+                    '</div>' +
+                    '<div class="card-text">' +
+                    '<span class = "name">' + post.product_name + '</span>' + '<span class="unit">' + post.unit + '</span>' + '<br>' +
+                    '<span class="farm">' + "From " + post.farm_name + " farm" + '</span>' + '<br>' +
+                    '</div>' + '<span class="price">' + "₹ " + post.price + '</span>' +
+                    '<div class="card-add">' +
+                    ' <button class="add-button"   id=' + post.stock_id + '  type="submit"  >' + '<i class="fa fa-cart-plus">' + '</i>' + '</button>' +
+                    '</div>' +
+                    '</div>')
+            });
+        }
+        });
+    }
+</script>
 
 <body>
     <div class="topnav">
@@ -23,7 +61,7 @@
         </form>
         <a href="../templates/login.html">Login</a>
         <a href="../templates/registration.html">Register</a>
-        <a href="../templates/home-page.html">Home</a>
+        <a id ="active" href="../templates/home-page.html">Home</a>
     </div>
     <?php require ('../php/header.php'); ?>
     <div class="myslides">
@@ -40,38 +78,44 @@
             
     <div class="division">
         <div class="box">
-            <form action="../templates/listing-page.html">
+            <form action="../templates/listing-page.html#Vegetable">
             <div class="div-image">
                 <img src="../static/images/vegetables.jpg " alt="">
             </div>
             <div class="btn">
-                <button type="submit" action="../templates/listing-page.html">Vegetables</button>
+                <button type="submit" >Vegetables</button>
             </div>
         </div>
         </form>
         <div class="box">
+            <form action="../templates/listing-page.html#Fruit">
             <div class="div-image">
                 <img src="../static/images/fruits.jpg ">
             </div>
             <div class="btn">
                 <button type="submit">Fruits</button>
             </div>
+            </form>
         </div>
         <div class="box">
+            <form action="../templates/listing-page.html#Dairy">
             <div class="div-image">
                 <img src="../static/images/diary.jpg ">
             </div>
             <div class="btn">
                 <button type="submit">Dairy</button>
             </div>
+            </form>
         </div>
         <div class="box">
+            <form action="../templates/listing-page.html#Other-product">
             <div class="div-image">
                 <img src="../static/images/oil-product.jpg">
             </div>
             <div class="btn">
                 <button type="submit">Other</button>
             </div>
+            </form>
         </div>
     </div>
     <br><br>

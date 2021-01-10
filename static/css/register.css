@@ -6,15 +6,16 @@ body {
 }
 
 .topnav {
-
     overflow: hidden;
     background-color: rgba(96.00000187754631, 140.00000685453415, 106.00000128149986, 1);
     padding-left: 40px;
-  
+}
+
+.topnav #active{
+  color: black;
 }
 
 .topnav a {
-  
     margin-top: 7px;
     margin-right: 20px;
     float: right;
@@ -25,16 +26,16 @@ body {
     padding: 14px 16px;
     font-size: 17px;
     text-decoration:none;
-
 }
 
 .topnav a:hover {
   
     background-color: rgba(98.00000187754631, 150.00000685453415, 106.00000128149986, 1);
     color: black;
-    text-decoration:none;
 
 }
+
+
 
 #ven_text {
   

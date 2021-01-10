@@ -60,7 +60,7 @@
     <button id="cart-button" type="submit" ><i class="fa fa-shopping-cart"></i></button>
   </form>
     <form id="search-icon" action="../templates/search.html">
-      <input type="text" placeholder="Search" />
+      <input type="text" name="query-string" placeholder="Search" />
 			<button id ="search-button" action="/action_page.php" type="submit" ><i class="fa fa-search"></i></button>
     </form>
     <a href="../templates/login.html">Login</a>
@@ -73,10 +73,10 @@
 
 <div class="sidenav">
     <hr>
-    <a href="../templates/listing-page.html">Vegetables</a><hr>
-    <a href="">Fruits</a><hr>
-    <a href="">Diary</a><hr>
-    <a href="">Other Products</a><hr>
+    <a class="list" href="../templates/listing-page.html?#Vegetable">Vegetables</a><hr>
+    <a class="list" href="../templates/listing-page.html?#Fruit">Fruits</a><hr>
+    <a class="list" href="../templates/listing-page.html?#Dairy">Dairy</a><hr>
+    <a class="list" href="../templates/listing-page.html?#Other-product">Other Products</a><hr>
     <a href="../templates/add-product.html" class="farmer-only">Add Product</a><hr>
     <a href="../templates/stock-page.html" class="farmer-only">My Stock</a><hr>
     <a class="active" href="../templates/orders-page.html">Orders</a><hr>

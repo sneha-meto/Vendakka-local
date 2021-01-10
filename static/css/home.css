@@ -18,18 +18,20 @@
     float: right;
     color: rgba(255, 255, 255, 1);
     text-align: center;
-    font-family:Poppins;
     font-style: normal;
     font-weight: bold;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
-    text-decoration:none;
   }
   
   .topnav a:hover 
   {
     background-color: rgba(98.00000187754631, 150.00000685453415, 106.00000128149986, 1);
+    color: black;
+  }
+
+  .topnav #active{
     color: black;
   }
   

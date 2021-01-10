@@ -123,6 +123,7 @@ body {
         padding: 8px 20px;
         color:white;
         font-weight: 600;
+        outline:none;
     }
 
     .sidenav a:hover {
@@ -130,9 +131,9 @@ body {
         color: black;
     }
 
-    .sidenav a.active{
+    .sidenav .active{
       background-color: white;
-        color: black;
+      color: black;
     }
 
     hr{ 
@@ -219,7 +220,7 @@ body {
     }
 
     .product-container{  
-      
+        margin-bottom:30px;
         display: grid;
         grid-template-columns: repeat(auto-fill,215px);
         grid-gap: 25px 25px;

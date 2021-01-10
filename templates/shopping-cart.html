@@ -83,7 +83,6 @@
 	}
 
 	function buy(){
-
 		$.ajax({
 				url: 'http://localhost/Vendakka-local/php/checkout.php',
 				type: 'POST',
@@ -101,7 +100,7 @@
   <span id="ven_text">Vendakka</span>
    <form action="../templates/shopping-cart.html"><button id="cart_button" type="submit" ><i class="fa fa-shopping-cart"></i></button></form>
     <form id="search_icon" action="../templates/search.html">
-                <input type="text" placeholder="Search" />
+                <input type="text" name="query-string" placeholder="Search" />
 				<button><i class="fa fa-search"></i></button>
 				
     </form>

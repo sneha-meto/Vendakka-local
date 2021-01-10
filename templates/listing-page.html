@@ -6,18 +6,84 @@
 <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 <link rel="stylesheet" href="../static/css/listing.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
-
 </head>
+<script>
 
-<body>
+
+
+    function grab(){
+        words = location.hash.substr(1).split('-');
+        list_category = words.join(" ");
+        console.log(list_category);
+        var sidenav_element = document.getElementById(list_category);
+        sidenav_element.className += ", active";
+        categories = {'Fruit':'Fruits','Vegetable':'Vegetables','Other product':'Other Products','Dairy':'Dairy Products'};
+        $('h1').html(categories[list_category]);
+
+        $.ajax({
+            method: 'POST',
+            url: "../php/categories.php",
+            dataType: 'json',
+            data: { category: list_category },
+            dataType: 'json',
+            success: function (response) {
+            console.log(response);
+            $.map(response, function (post, i) {
+                $('.product-container').append(
+                    '<div class="card">' +
+                    '<div class="card-image">' +
+                    '<img src=' + post.product_image + ' alt="">' +
+                    '</div>' +
+                    '<div class="card-text">' +
+                    '<span class = "name">' + post.product_name + '</span>' + '<span class="unit">' + post.unit + '</span>' + '<br>' +
+                    '<span class="farm">' + "From " + post.farm_name + " farm" + '</span>' + '<br>' +
+                    '</div>' + '<span class="price">' + "₹ " + post.price + '</span>' +
+                    '<div class="card-add">' +
+                    ' <button class="add-button" id="'+post.stock_id+'"  type="submit"  >' + '<i class="fa fa-cart-plus">' + '</i>' + '</button>' +
+                    '</div>' +
+                    '</div>');
+
+            });
+        }
+    });
+   
+    }
+
+
+    $(document).on("click",".list",function(){
+        setTimeout(function(){location.reload();},20);
+        // location.reload();
+        }
+    );
+
+
+        $(document).ready(function(){
+            $(document).on("click",".add-button",function(){
+            console.log(this.id);
+            var data = {id: this.id};
+            $.ajax({
+            method: 'POST',
+            url:"../php/cart-insert.php",
+            data: data,
+            dataType:'json',
+            });
+        });
+        });
+
+ 
+
+</script>
+
+<body onload="grab()">
 <div class="topnav">
   <span id="ven_text">Vendakka</span>
   <form action="../templates/shopping-cart.html">
     <button id="cart-button" type="submit" ><i class="fa fa-shopping-cart"></i></button>
   </form>
     <form id="search-icon" action="../templates/search.html">
-      <input type="text" placeholder="Search" />
+      <input type="text" name="query-string" placeholder="Search" />
 			<button id ="search-button" action="/action_page.php" type="submit" ><i class="fa fa-search"></i></button>
     </form>
     <a href="../templates/login.html">Login</a>
@@ -31,89 +97,20 @@
 </div>
 <div class="sidenav">
     <hr>
-    <a class="active" href="../templates/listing-page.html">Vegetables</a><hr>
-    <a href="">Fruits</a><hr>
-    <a href="">Diary</a><hr>
-    <a href="">Other Products</a><hr>
+    <a id = "Vegetable" class="list" href="../templates/listing-page.html?#Vegetable">Vegetables</a><hr>
+    <a id= "Fruit" class="list" href="../templates/listing-page.html?#Fruit">Fruits</a><hr>
+    <a id= "Dairy" class="list" href="../templates/listing-page.html?#Dairy">Dairy</a><hr>
+    <a id= "Other product" class="list" href="../templates/listing-page.html?#Other-product">Other Products</a><hr>
     <a href="../templates/add-product.html" class="farmer-only">Add Product</a><hr>
     <a href="../templates/stock-page.html" class="farmer-only">My Stock</a><hr>
     <a href="../templates/orders-page.html">Orders</a><hr>
 </div>
 
 <section id= "product-section">
-    <h1>Vegetables</h1>
+    <h1></h1>
     <div class="product-container">
-    <div class="card">
-        <div class="card-image">
-            <img src="../static/images/tomato.jpeg" alt="">
-        </div>
-        <div class="card-text">
-            <span class = "name"> Carrot</span> <span class="unit"> per Kg</span><br>
-           <span class="farm"> From Green's Farm</span><br>
-            
-        </div><span class="price"> ₹ 30</span>
-        <div class="card-add">
-            <button class="add-button" action="/action_page.php" type="submit" ><i class="fa fa-cart-plus"></i></button>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-image">
-            <img src="../static/images/carrot.jpeg" alt="">
-        </div>
-        <div class="card-text">
-            <span class = "name"> Carrot</span> <span class="unit"> per Kg</span><br>
-            <span class="farm"> From Green's Farm</span><br>
-           
-        </div> <span class="price"> ₹ 30</span>
-        <div class="card-add">
-            <button class="add-button" action="/action_page.php" type="submit" ><i class="fa fa-cart-plus"></i></button>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-image">
-            <img src="../static/images/cabbage.jpeg" alt="">
-        </div>
-        <div class="card-text">
-            <span class = "name"> Carrot</span> <span class="unit"> per Kg</span><br>
-            <span class="farm"> From Green's Farm</span><br>
-            
-        </div><span class="price"> ₹ 30</span>
-        <div class="card-add">
-            <button class="add-button" action="/action_page.php" type="submit" ><i class="fa fa-cart-plus"></i></button>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-image">
-            <img src="../static/images/bell-pepper.jpeg" alt="">
-        </div>
-        <div class="card-text">
-            <span class = "name"> Carrot</span> <span class="unit"> per Kg</span><br>
-            <span class="farm"> From Green's Farm</span><br>
-            
-        </div><span class="price"> ₹ 30</span>
-        <div class="card-add">
-            <button class="add-button" action="/action_page.php" type="submit" ><i class="fa fa-cart-plus "></i></button>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-image">
-            <img src="../static/images/onion.jpeg" alt="">
-        </div>
-        <div class="card-text">
-            <span class = "name"> Carrot</span> <span class="unit"> per Kg</span><br>
-            <span class="farm"> From Green's Farm</span><br>
-            
-        </div><span class="price"> ₹ 30</span>
-        <div class="card-add">
-            <button class="add-button" action="/action_page.php" type="submit" ><i class="fa fa-cart-plus"></i></button>
-        </div>
-    </div>
 
     </div>
-
-
-
-
 </section>
 
 <script>
