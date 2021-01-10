@@ -9,7 +9,7 @@ if(mysqli_connect_errno()) {
 // else if(isset($_GET['submit']))
 // {
 $search_string = $_POST['search'];
-$query="SELECT * FROM stock natural join farmer natural join users WHERE product_name LIKE '%$search_string%'";
+$query="SELECT * FROM stock natural join farmer natural join users WHERE product_name LIKE '%$search_string%' and stock_quantity > 0";
 $res=mysqli_query($conn,$query);
 
 $rows = [];

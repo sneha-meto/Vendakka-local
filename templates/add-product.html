@@ -1,16 +1,53 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
-
 <head>
-  <title></title>
-
-</head>
+<title></title>
 <link rel="stylesheet" href="../static/css/add-product.css">
 <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
 <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+</head>
+<script type="text/javascript" language="javascript">
 
+  function getQueryString(string) {
+  var params = location.search.substring(1).split("&");
+  for (var i = 0; i < params.length; i++) {
+      var temp = params[i].split("=");            
+      if (string == temp[0]) {
+          words=temp[1].split("-");
+          status=words.join(" ");
+          return status;
+      }
+      else return "";
+  }
+  }
+  function grab(){
+    document.getElementById("toast").innerHTML= getQueryString("toast");
+      // document.getElementById("toast").innerHTML= getQueryString("toast");
+  }
+
+  function check(){
+    var uploadField = document.getElementById('f'); 
+    var filePath = uploadField.value; 
+    var allowedExtensions =  /(\.jpg|\.jpeg|\.png|\.gif)$/i; 
+
+    if(uploadField.files[0].size > 2200000){
+      alert("File is too big, please limit file size to 2 MB");
+      uploadField.value = null;
+    }
+
+    if (!allowedExtensions.exec(filePath)) { 
+      alert('Invalid file type'); 
+      uploadField.value = null; 
+      return false; 
+    }
+  
+  }
+
+
+</script>
 
 <body onload="grab()">
 
@@ -19,7 +56,7 @@
     <form action="../templates/shopping-cart.html">
       <button id="cart-button" type="submit"><i class="fa fa-shopping-cart"></i></button>
     </form>
-    <form id="search-icon" action="#search">
+    <form id="search-icon" action="../templates/search.html">
       <input type="text" id="s" placeholder="Search" />
       <button id="search-button" action="/action_page.php" type="submit"><i class="fa fa-search"></i></button>
     </form>
@@ -101,52 +138,13 @@
    
       
      
-
-    
-      <script type="text/javascript" language="javascript">
- // $('#add-form').ajaxForm(function(response) {alert(response);});
-      function getQueryString(string) {
-      var params = location.search.substring(1).split("&");
-      for (var i = 0; i < params.length; i++) {
-          var temp = params[i].split("=");            
-          if (string == temp[0]) {
-              words=temp[1].split("-");
-              status=words.join(" ");
-              return status;
-          }
-          else return "";
-      }
-      }
-      function grab(){
-        document.getElementById("toast").innerHTML= getQueryString("toast");
-          // document.getElementById("toast").innerHTML= getQueryString("toast");
-      }
-
-      function check(){
-        var uploadField = document.getElementById('f'); 
-        var filePath = uploadField.value; 
-        var allowedExtensions =  /(\.jpg|\.jpeg|\.png|\.gif)$/i; 
-
-        if(uploadField.files[0].size > 2200000){
-          alert("File is too big, please limit file size to 2 MB");
-          uploadField.value = null;
-        }
-
-        if (!allowedExtensions.exec(filePath)) { 
-          alert('Invalid file type'); 
-          uploadField.value = null; 
-          return false; 
-        }
-      
-      }
-
-      
-      $(document).ready(function () {
+<script>
+      // $(document).ready(function () {
         var name = "<?php echo $_SESSION['username']; ?>".toString();
         var farm = "<?php echo $_SESSION['farm_name']; ?>".toString();
         document.getElementById("greeting").innerHTML="Welcome Farmer, "+name+" <br><span>"+farm+"</span>";
 
-      });
+      // });
 
 </script>
 </body>

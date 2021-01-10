@@ -223,12 +223,17 @@ p span{
 
 }
 
-#remove_button { 
+.remove_button { 
 
 		font-size:30px;
 		background-color: #F4F4F4;
 
 }
+
+.remove_button:hover{
+	color: red;
+	
+	}
 
 .container {
   

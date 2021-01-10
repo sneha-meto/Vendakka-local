@@ -1,4 +1,4 @@
-
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,14 +6,101 @@
 <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 <link rel="stylesheet" href="../static/css/cart.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
 
 </head>
-<body>
+<script>
+	var items=0;
+	var subtotal=0;
+	var stock=1;
+
+	function update(){
+			document.getElementById("item_count").innerHTML=items;
+			document.getElementById("sub_total").innerHTML='₹ '+subtotal;
+			document.getElementById("grand_total").innerHTML='₹ '+(subtotal+30);
+		}
+
+
+	$(document).ready(function(){
+		$(document).on("click",".remove_button",function(){
+			items-=1;
+			location.reload();
+			update();
+			$(this).closest('tr').remove();
+			var data = {id: this.id};
+			$.ajax({
+				url: '../php/cart-delete.php',
+				type: 'POST',
+				dataType: 'json',
+				data:data,
+				success: function (data) {
+					console.log(data);
+				}	
+			})
+		});
+	});
+
+	$(document).on("input",".qty", function() {
+		var change = {value: this.value, id:this.id,};
+		$.ajax({
+				url: '../php/cart-dynamic.php',
+				type: 'POST',
+				dataType: 'json',
+				data:change,
+			})
+		location.reload();
+		});
+
+	function grab_data() { 
+		$("[type='number']").keypress(function (evt) {
+    	evt.preventDefault();
+		});
+		$.ajax({
+			method: 'GET',
+			url:"../php/cart-page.php",
+			dataType:'json',
+			success: function(raw_responses) {
+			$.map(raw_responses,function(response,i){
+			items+=1;
+			total=response.quantity*response.price;
+			subtotal+=total;
+			update();
+
+			$('tbody').append(
+			'<tr>'+
+				'<td><img id="item_image" src="'+response.product_image+'" alt="item_image"></td>'+
+				'<td>'+response.product_name+'<div id="farm_name">'+response.farm_name+'</div></td>'+
+				'<td> <input type="number" class="qty" name="" value="'+response.quantity+'" id="'+response.cart_id+'" min="1" max="'+response.stock_quantity+'" onKeyDown="return false"> '+response.unit+'<br><span id ="status"></span></td>'+
+				'<td>₹ ' +response.price+'</td>'+
+				'<td>₹ '+total+'</td>'+
+				'<td><button class="remove_button" id ="'+response.cart_id+'" ><i class="fa fa-minus-circle"></i></button></td>'+
+			'</tr>'
+			);
+		});
+		}
+		});
+	}
+
+	function buy(){
+
+		$.ajax({
+				url: 'http://localhost/Vendakka-local/php/checkout.php',
+				type: 'POST',
+				dataType: 'json',
+				success: function () {
+					console.log('done');	
+				}	
+			})
+			location.reload();
+	}
+
+</script>
+<body onload="grab_data()">
 <div class="topnav">
   <span id="ven_text">Vendakka</span>
    <form action="../templates/shopping-cart.html"><button id="cart_button" type="submit" ><i class="fa fa-shopping-cart"></i></button></form>
-    <form id="search_icon" action="#search">
+    <form id="search_icon" action="../templates/search.html">
                 <input type="text" placeholder="Search" />
 				<button><i class="fa fa-search"></i></button>
 				
@@ -36,51 +123,28 @@
     <thead>
         <tr>
             <th>Product</th>
-			
 			<th></th>
             <th>Quantity</th>
 			<th>Price</th>
 			<th>Total</th>
 			<th></th>
-			
         </tr>
     </thead>
-    <tbody>
-	
-        <tr>
-			<td><img id="item_image" src="../static/images/tomato.jpeg" alt="item_image"></td>
-			<td>Tomato <div id="farm_name">Eden Gardens </div></td>
-			<td>3kg</td>
-			<td>₹ 20</td>
-			<td>₹ 60</td>
-			<td><form action="#remove"><button id="remove_button" ><i class="fa fa-minus-circle"></i></button></form></td>
-        </tr>
-
-	
-	
-		<tr>
-			<td><img id="item_image" src="../static/images/onion.jpeg" alt="item_image"></td>
-            <td>Onion <div id="farm_name">Green Farm </div></td>
-			<td>3kg</td>
-			<td>₹ 20</td>
-			<td>₹ 60</td>
-			<td><form action="#remove"><button id="remove_button" ><i class="fa fa-minus-circle"></i></button></form></td>
-        </tr>  
+    <tbody>	
     </tbody>
 </table>
 </div>
-<div id="bill" class="alignright">
-      <h4 id="summary">Summary</h4>
-	  <div id="line"></div>
-      <p><span id="item">Items:</span> <span id="price">2</span></p>
-	  <p><span id="item">Subtotal:</span> <span id="price">$170</span></p>
-	  <p><span id="item">Delivery Charges:</span> <span id="price">$30</span></p>
-	  <div id="line"></div>
-	  <p><span id="total">Grand Total:</span> <span id="price">$200</span></p>
-	  <p><form action="#check-out"><button id="check_out_button" ><span id="check-out">Check Out</button></span></form></p>
-	  
-</div>
 
+<div id="bill" class="alignright">
+	<h4 id="summary">Summary</h4>
+	<hr>
+	<p><span id="item">Items :</span> <span id="item_count" class="price">0</span></p>
+	<p><span id="item">Subtotal :</span> <span id="sub_total" class="price"> 0</span></p>
+	<p><span id="item">Delivery <br> Charges :</span> <span class="price">₹ 30</span></p>
+	<hr>
+	<p class ="grand"><span id="total">Grand <br> Total :</span> <span  id="grand_total" class="price">  0</span></p>
+	<p> <button id="check_out_button" onclick="buy()">Check Out</button></p>
+</div>
 
 </body>
 </html>

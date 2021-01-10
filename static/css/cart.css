@@ -130,7 +130,7 @@ button {
 		font-style: normal;
 		font-weight: bold;
 		text-align: center;
-		font-size:30px;
+		font-size:32px;
 		letter-spacing:0;
 
 }
@@ -200,6 +200,22 @@ button {
 		border-top-right-radius: 15px; 
 
 }
+tr input {
+	width: 3em;
+	text-align: center;
+	padding: 5px 5px;
+	margin:0px 3px;
+	background-color: white;
+	border:none;
+	color: black;
+	border-radius: 5px;
+	font-family: Poppins;
+	outline:none;
+	cursor: default;
+	caret-color: transparent;
+	box-shadow: 1px 1px 3px grey;
+	
+  }
 
 #item_image {
 	
@@ -220,11 +236,23 @@ button {
 
 }
 
-#remove_button { 
-
+.remove_button { 
 		font-size:30px;
 		background-color: #F4F4F4;
+		
 
+
+}
+
+.remove_button:hover{
+color: red;
+
+}
+
+#status{
+	padding: 0;
+	color:red;
+	font-size: 14px;
 }
 
 .container {
@@ -238,8 +266,8 @@ button {
  #bill {
 	 
 		margin-top: 50px;
-		margin-right: 50px;
-		padding: 20px 15px 15px 20px; 
+		margin-right: 100px;
+		padding: 20px 15px ; 
 		background-color:rgba(96.00000187754631, 140.00000685453415, 106.00000128149986, 1);
 		opacity:1;
 		width:180px;
@@ -255,21 +283,19 @@ button {
 		opacity:1;
 		font-family:Comfortaa;
 		text-align:center;
-		font-size:23px;
+		font-size:24px;
 		letter-spacing:0;
 		margin: 0;
 		padding : 20px 5px;
 	
 }
 
-#line { 
-
-		transform: rotate(-4.969616689786745e-17deg);
-		opacity:1;
-		border:1px solid rgba(255, 255, 255, 1);
-		text-align: left;
-		line-height: undefined;
-
+hr { 
+	margin:0;
+	width:100%;
+	border: 1px solid white;
+	border-radius: 1px;
+	
 }
 
 #item {
@@ -277,48 +303,54 @@ button {
 		color:rgba(255, 255, 255, 1);
 		opacity:1;
 		text-align:left;
-		word-spacing:100px;
+		font-size:17px;
 		line-height:undefined;
 
 }
 
-#price {
+.price {
 	
 		margin-right: 10px;
 		float:right;
 		font-style: normal;
-		font-weight: 500;
+		/* font-weight: 500; */
 		color: #FFFFFF;
 
 }
 
 #total {
 	
-		word-spacing:100px;
 		font-style: normal;
-		font-weight: 600;
 		color: #FFFFFF;
+		
 
 }
+#bill .grand{
+	font-size: 18px;
+	font-weight: bold;
+}
+
+
 
 #check_out_button {
 	
 		box-shadow:4px 4px 4px rgba(0, 0, 0, 0.25);
-		margin: 10px 20px 10px 30px;
+		margin: 10px;
 		border-radius: 20px;
-		padding: 10px 5px 15px 20px;
-
-}
-
-#check-out {
-	
-		padding-top:15px;
+		padding: 5px 35px ;
 		text-align: center;
-		margin-right:10px;	
-		font-size:15px;
+		font-size: 16px;
 		font-style: normal;
 		font-weight: bold;
+		font-family: Poppins;
+
 }
+
+#check_out_button:hover{
+background-color: black;
+color: white;
+}
+
 
   /* for header.php */
   #logout-btn{   

@@ -1,6 +1,5 @@
 
 <?php
-session_start();
 
 if(!isset($_SESSION['username'])==null){
 echo '<div id="log-div">

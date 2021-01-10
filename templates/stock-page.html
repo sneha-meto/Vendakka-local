@@ -1,21 +1,66 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
 <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
 <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 <link rel="stylesheet" href="../static/css/stock.css">
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 </head>
-<body>
+
+<script>
+
+
+$(document).ready(function(){
+		$(document).on("click",".remove_button",function(){
+			$(this).closest('tr').remove();
+			var data = {id: this.id};
+			$.ajax({
+				url: 'http://localhost/Vendakka-local/php/stock-delete.php',
+				type: 'POST',
+				dataType: 'json',
+				data:data,
+				success: function (data) {
+					console.log(data);
+				}	
+			})
+		});
+	});
+
+function grab(){
+
+	$.ajax({
+				method: 'GET',
+				url: '../php/stock-view.php',
+				dataType: 'json',
+			}).done(function (data) {
+				console.log(data);
+			$.map(data, function (post, i) {
+
+		$('tbody').append('<tr>'+
+			'<td>'+ post.stock_id +'</td>'+
+			'<td>'+ '<img id="item_image" src='+post.product_image+' alt="item_image"></td>'+
+			'<td>'+post.product_name +' <div id="farm_name">'+ post.farm_name + '</div></td>'+
+			'<td>'+ post.stock_quantity +' '+post.unit +'</td>'+
+			'<td>₹ '+post.price + '</td>'+
+			'<td><button class="remove_button" id ="'+post.stock_id+'" ><i class="fa fa-minus-circle"></i></button></td>'+
+		'</tr>');
+		
+		});
+	});
+}
+
+</script>
+
+<body onload="grab()">
 <div class="topnav">
   <span id="ven_text">Vendakka</span>
    <form action="../templates/shopping-cart.html"><button id="cart_button" type="submit" ><i class="fa fa-shopping-cart"></i></button></form>
-    <form id="search_icon" action="#search">
+    <form id="search_icon" action="../templates/search.html">
                 <input type="text" placeholder="Search" />
-				<button><i class="fa fa-search"></i></button>
-				
+				<button><i class="fa fa-search"></i></button>	
     </form>
 	<a href="../templates/login.html">Login</a>
     <a href="../templates/registration.html">Register</a>
@@ -57,25 +102,6 @@
     </thead>
     <tbody>
 	
-        <tr>
-			<td>s101</td>
-			<td><img id="item_image" src="../static/images/tomato.jpeg" alt="item_image"></td>
-			<td>Tomato <div id="farm_name">Eden Gardens </div></td>
-			<td>30kg</td>
-			<td>₹ 20</td>
-			<td><form action="#remove"><button id="remove_button" ><i class="fa fa-minus-circle"></i></button></form></td>
-        </tr>
-
-	
-	
-		<tr>
-			<td>s121</td>
-			<td><img id="item_image" src="../static/images/onion.jpeg" alt="item_image"></td>
-            <td>Onion <div id="farm_name">Green Farm </div></td>
-			<td>25kg</td>
-			<td>₹ 30</td>
-			<td><form action="#remove"><button id="remove_button" ><i class="fa fa-minus-circle"></i></button></form></td>
-        </tr>  
     </tbody>
 </table>
 </div>

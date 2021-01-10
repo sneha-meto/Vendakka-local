@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,7 @@
   <form action="../templates/shopping-cart.html">
     <button id="cart-button" type="submit" ><i class="fa fa-shopping-cart"></i></button>
   </form>
-    <form id="search-icon" action="#search">
+    <form id="search-icon" action="../templates/search.html">
       <input type="text" placeholder="Search" />
 			<button id ="search-button" action="/action_page.php" type="submit" ><i class="fa fa-search"></i></button>
     </form>

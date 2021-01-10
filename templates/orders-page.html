@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,16 +6,60 @@
 <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
 <link rel="stylesheet" href="../static/css/orders.css">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
 </head>
+  <script>
+  function grab_data() { 
+        $.ajax({
+            method: 'GET',
+            url:"../php/orders.php",
+            dataType:'json',
+            success: function(raw_responses) {
+              // console.log(raw_responses);
 
-<body >
+
+            $.map(raw_responses,function(response,i){
+              var items="";
+              var qty="";
+              var prices="";
+              var total=0;
+
+              for(var j=0;j<response.length;j++){
+              items += response[j].product_name +'<br>';
+              qty += response[j].quantity +' '+response[j].unit+'<br>';
+              prices += '₹ '+response[j].price +'<br>';
+              total += response[j].quantity * response[j].price;
+              }
+              // for(var k=0;k<response.length;k++){
+              // items+= response[k].product_name +'<br>';
+              // }
+            $('tbody').append(
+            '<tr><td>'+response[0].order_id+'</td>'+
+              '<td>'+ response[0].username+ '</td>'+
+              '<td>'+ items +'</td>'+
+              '<td>'+ qty +'</td>'+
+              '<td>'+ prices +'</td>'+
+              '<td>₹ '+ total +'</td>'+
+            '</tr>'
+            );
+         });
+         
+         }
+        });
+
+        }
+  
+  
+  
+  </script>
+<body onload="grab_data()">
 <div class="topnav">
   <span id="ven_text">Vendakka</span>
   <form action="../templates/shopping-cart.html">
     <button id="cart-button" type="submit" ><i class="fa fa-shopping-cart"></i></button>
   </form>
-    <form id="search-icon" action="#search">
+    <form id="search-icon" action="../templates/search.html">
       <input type="text" placeholder="Search" />
 			<button id ="search-button" action="/action_page.php" type="submit" ><i class="fa fa-search"></i></button>
     </form>
@@ -53,25 +98,11 @@
         <th>Customer</th>
         <th>Products</th>
         <th>Quantity</th>
-        <th>Cost</th>
+        <th>Price</th>
+        <th>Total</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>o101</td>
-        <td>James19</td>
-        <td>Tomato <br> Onion <br>Green Amaranthine</td>
-        <td>3 Kg <br> 2 Kg <br> 2 Bunches</td>
-        <td>₹ 140</td>
-      </tr>
-      
-      <tr>
-          <td>o101</td>
-          <td>James19</td>
-          <td>Tomato </td>
-          <td>3 kg </td>
-          <td>₹ 140</td>
-      </tr>  
     </tbody>
   </table>
 </div>
