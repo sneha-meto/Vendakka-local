@@ -11,15 +11,12 @@
 </head>
 <script>
 
-
-
     function grab(){
-        words = location.hash.substr(1).split('-');
-        list_category = words.join(" ");
+        list_category = location.hash.substr(1);
         console.log(list_category);
         var sidenav_element = document.getElementById(list_category);
         sidenav_element.className += ", active";
-        categories = {'Fruit':'Fruits','Vegetable':'Vegetables','Other product':'Other Products','Dairy':'Dairy Products'};
+        categories = {'Fruit':'Fruits','Vegetable':'Vegetables','Other':'Other Products','Dairy':'Dairy Products'};
         $('h1').html(categories[list_category]);
 
         $.ajax({
@@ -38,26 +35,26 @@
                     '</div>' +
                     '<div class="card-text">' +
                     '<span class = "name">' + post.product_name + '</span>' + '<span class="unit">' + post.unit + '</span>' + '<br>' +
-                    '<span class="farm">' + "From " + post.farm_name + " farm" + '</span>' + '<br>' +
+                    '<span class="farm">' + "From " + post.farm_name + '</span>' + '<br>' +
                     '</div>' + '<span class="price">' + "₹ " + post.price + '</span>' +
                     '<div class="card-add">' +
-                    ' <button class="add-button" id="'+post.stock_id+'"  type="submit"  >' + '<i class="fa fa-cart-plus">' + '</i>' + '</button>' +
+                    '<button class="add-button" id="'+post.stock_id+'"  type="submit"  >' + '<i class="fa fa-cart-plus">' + '</i>' + '</button>' +
                     '</div>' +
                     '</div>');
+
 
             });
         }
     });
+
    
     }
-
 
     $(document).on("click",".list",function(){
         setTimeout(function(){location.reload();},20);
         // location.reload();
         }
     );
-
 
         $(document).ready(function(){
             $(document).on("click",".add-button",function(){
@@ -70,6 +67,9 @@
             dataType:'json',
             });
         });
+
+      
+
         });
 
  
@@ -100,7 +100,7 @@
     <a id = "Vegetable" class="list" href="../templates/listing-page.html?#Vegetable">Vegetables</a><hr>
     <a id= "Fruit" class="list" href="../templates/listing-page.html?#Fruit">Fruits</a><hr>
     <a id= "Dairy" class="list" href="../templates/listing-page.html?#Dairy">Dairy</a><hr>
-    <a id= "Other product" class="list" href="../templates/listing-page.html?#Other-product">Other Products</a><hr>
+    <a id= "Other" class="list" href="../templates/listing-page.html?#Other">Other Products</a><hr>
     <a href="../templates/add-product.html" class="farmer-only">Add Product</a><hr>
     <a href="../templates/stock-page.html" class="farmer-only">My Stock</a><hr>
     <a href="../templates/orders-page.html">Orders</a><hr>
@@ -121,6 +121,13 @@ if (type == "farmer"){
    x[i].style.display="inline-block";
  }
  }
+
+//  if (type == "customer"){
+//  x=document.getElementsByClassName("cust-only");
+//  for(i=0;i<x.length;i++){
+//    x[i].style.display="inline-block";
+//  }
+//  }
 </script>
 
 </body>

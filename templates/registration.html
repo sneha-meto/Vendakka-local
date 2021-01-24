@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -50,6 +51,7 @@
         <a href="../templates/home-page.html">Home</a>
         
     </div>
+    <?php require ('../php/header.php'); ?>
     
     <div class="section-split">
             <div class="left">
@@ -57,7 +59,7 @@
         <p >Join Vendakka now!</p>
         <a href="../templates/login.html"> <button class="login" id="sub">Login</button></a>
             <div class="form-box">
-                <form name="f" action="../php/reguser.php" method="POST" onsubmit="return checkform()">
+                <form name="f" action="../php/register.php" method="POST" onsubmit="return checkform()">
                 <label>Username</label>
                 <div class="input-group">
                     <input type="text" name="username" required class="inp" >

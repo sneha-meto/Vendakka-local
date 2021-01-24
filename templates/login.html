@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,6 +25,10 @@
     function grab(){
         document.getElementById("toast").innerHTML= getQueryString("toast");
     }
+
+    function help(){
+        document.getElementById("toast").innerHTML= "Please contact Helpline No : 22 55";
+    }
 </script>
 <div class="topnav">
   <span id="ven_text">Vendakka</span>
@@ -37,6 +42,7 @@
     <a href="../templates/home-page.html">Home</a>
   
 </div>
+<?php require ('../php/header.php'); ?>
 
     <div class="section-split">
           <div class="left">
@@ -60,12 +66,13 @@
                     <input type="password" name="password" id=""required class="inp" placeholder="Password" id="lock">
                    
                 </div>
-                <a href="" class="pass">Forgot Password?</a><br><br>
+                <p onclick="help()" class="pass">Forgot Password?</p><br><br>
 
 
                 <button type="submit" id="log" onclick="toast()">Login</button> 
             </form> 
             <div id="toast"></div>
+            <div id="message"></div>
             </div>
     
           </div>

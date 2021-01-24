@@ -2,19 +2,15 @@
 
 
 body {
-	
 	  margin: 0;
 	  font-family:Poppins;
-  
 }
 
 .topnav {
-  
 	  overflow: hidden;
 	  background-color: rgba(96.00000187754631, 140.00000685453415, 106.00000128149986, 1);
 	  padding-left: 40px;
 	  padding-top: 6px;
-    
 }
 
 .topnav a {

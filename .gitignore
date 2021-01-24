@@ -5,3 +5,7 @@ static/images/.DS_Store
 templates/.DS_Store
 .vscode/
 __pycache__/
+.VSCodeCounter/results.txt
+.VSCodeCounter/results.csv
+.VSCodeCounter/details.md
+.VSCodeCounter/results.md

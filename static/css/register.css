@@ -301,4 +301,23 @@ input::-webkit-input-placeholder {
 
 }
 
+/* for header.php */
+#logout-btn{   
+  margin:5px 0px 5px 15px;
+    background-color:rgba(98.00000187754631, 150.00000685453415, 106.00000128149986, 1);
+    color:#ffffff;
+    width: 70px;
+    height:30px;
+  font-size: 15px;
+  font-weight:bold;
+  border-radius: 15px;
+  padding: 0px 10px;
+    box-shadow: 1px 1px 3px grey;
+  }
+  #log-div{
+    padding: 0px 25px;
+    box-shadow: 1px 1px 5px grey;
+    text-align: right;
+  }
+
 

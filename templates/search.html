@@ -48,6 +48,7 @@
                 });
             });
             });
+            
 
             function a (raw_responses) {
             $.map(raw_responses,function(response,i){
@@ -65,6 +66,8 @@
                 ' <button class="add-button"  id="'+response.stock_id+'"  type="submit" name="ct" >' + '<i class="fa fa-cart-plus">' + '</i>' + '</button>' +
                 '</div>' +
                 '</div>');
+
+
   
              });}
         
@@ -96,7 +99,7 @@
     <a class="list" href="../templates/listing-page.html?#Vegetable">Vegetables</a><hr>
     <a class="list" href="../templates/listing-page.html?#Fruit">Fruits</a><hr>
     <a class="list" href="../templates/listing-page.html?#Dairy">Dairy</a><hr>
-    <a class="list" href="../templates/listing-page.html?#Other-product">Other Products</a><hr>
+    <a class="list" href="../templates/listing-page.html?#Other">Other Products</a><hr>
     <a href="../templates/add-product.html" class="farmer-only">Add Product</a><hr>
     <a href="../templates/stock-page.html" class="farmer-only">My Stock</a><hr>
     <a href="../templates/orders-page.html">Orders</a><hr>
@@ -118,9 +121,15 @@
     x[i].style.display="inline-block";
     }
     }
+
+    else if (type == "customer"){
+    x=document.getElementsByClassName("cust-only");
+    for(i=0;i<x.length;i++){
+    x[i].style.display="inline-block";
+    }
+    }
+
     });
-
-
 
 </script>
 
